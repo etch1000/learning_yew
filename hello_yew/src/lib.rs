@@ -1,12 +1,16 @@
 mod components;
+mod display_count;
+mod increment_count;
 mod router;
+mod stores;
 
 use components::atoms::main_title::{Color, MainTitle};
 use components::molecules::custom_form::{CustomForm, Data};
 use components::molecules::struct_counter::StructCounter;
+use display_count::DisplayCount;
 use gloo::console::log;
+use increment_count::IncrementCount;
 use router::{switch, Route};
-// use serde::{Deserialize, Serialize};
 use std::ops::Deref;
 use stylist::{yew::styled_component, Style};
 use yew::{prelude::*, ContextProvider};
@@ -112,6 +116,8 @@ pub fn App() -> Html {
                 <Switch<Route> render={switch} />
             </BrowserRouter>
             <StructCounter />
+            <DisplayCount />
+            <IncrementCount />
         </ContextProvider<User>>
         </>
     }
