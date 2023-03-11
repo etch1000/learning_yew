@@ -3,6 +3,7 @@ mod router;
 
 use crate::router::{switch, Route};
 use components::atoms::main_title::{Color, MainTitle};
+use components::atoms::struct_hello::StructHello;
 use components::molecules::custom_form::{CustomForm, Data};
 use gloo::console::log;
 use serde::{Deserialize, Serialize};
@@ -110,6 +111,7 @@ pub fn App() -> Html {
             <BrowserRouter>
                 <Switch<Route> render={switch} />
             </BrowserRouter>
+            <StructHello message={"Hello from lib.rs using Struct Hello".to_owned()} />
         </ContextProvider<User>>
         </>
     }
