@@ -5,7 +5,9 @@ mod router;
 mod stores;
 
 use components::atoms::main_title::{Color, MainTitle};
+use components::molecules::auth_form::AuthForm;
 use components::molecules::custom_form::{CustomForm, Data};
+use components::molecules::display_auth::DisplayAuth;
 use components::molecules::struct_counter::StructCounter;
 use display_count::DisplayCount;
 use gloo::console::log;
@@ -108,7 +110,7 @@ pub fn App() -> Html {
                     <p>{"No messages to show"}</p>
                 }
 
-                <ul class="item-list" title="Technology & Crates Used">
+                <ul class="item_list" title="Technology & Crates Used">
                     { to_li(num_list) }
                 </ul>
             </div>
@@ -118,7 +120,10 @@ pub fn App() -> Html {
             <StructCounter />
             <DisplayCount />
             <IncrementCount />
+
         </ContextProvider<User>>
+        <AuthForm />
+        <DisplayAuth />
         </>
     }
 }
