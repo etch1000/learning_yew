@@ -1,22 +1,22 @@
 mod components;
 mod router;
 
-use crate::router::{switch, Route};
 use components::atoms::main_title::{Color, MainTitle};
-use components::atoms::struct_hello::StructHello;
 use components::molecules::custom_form::{CustomForm, Data};
+use components::molecules::struct_counter::StructCounter;
 use gloo::console::log;
-use serde::{Deserialize, Serialize};
+use router::{switch, Route};
+// use serde::{Deserialize, Serialize};
 use std::ops::Deref;
 use stylist::{yew::styled_component, Style};
 use yew::{prelude::*, ContextProvider};
 use yew_router::prelude::*;
 
-#[derive(Serialize, Deserialize)]
-struct LangName {
-    username: String,
-    fav_lang: String,
-}
+// #[derive(Serialize, Deserialize)]
+// struct LangName {
+//     username: String,
+//     fav_lang: String,
+// }
 
 #[derive(Clone, Default, PartialEq)]
 pub struct User {
@@ -29,14 +29,14 @@ const CSS_FILE: &str = include_str!("main.css");
 #[styled_component]
 pub fn App() -> Html {
     let user_state = use_state(User::default);
-    let name = "etch1000";
-    let lang_name = LangName {
-        username: name.to_owned(),
-        fav_lang: String::from("Rust Programming Language"),
-    };
+    // let name = "etch1000";
+    // let lang_name = LangName {
+    //     username: name.to_owned(),
+    //     fav_lang: String::from("Rust Programming Language"),
+    // };
 
-    log!("My name is :", name);
-    log!(serde_json::to_string_pretty(&lang_name).ok());
+    // log!("My name is :", name);
+    // log!(serde_json::to_string_pretty(&lang_name).ok());
 
     let class_p = "paragraph";
 
@@ -111,7 +111,7 @@ pub fn App() -> Html {
             <BrowserRouter>
                 <Switch<Route> render={switch} />
             </BrowserRouter>
-            <StructHello message={"Hello from lib.rs using Struct Hello".to_owned()} />
+            <StructCounter />
         </ContextProvider<User>>
         </>
     }
